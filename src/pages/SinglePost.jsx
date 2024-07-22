@@ -19,6 +19,7 @@ export default function PostDetail() {
         setPost(postData); // Imposta i dati del post nello stato
       } catch (error) {
         console.error("Errore nel caricamento del post:", error); // Logga l'errore in console
+        alert("Si è verificato un errore nel caricamento del post."); // Aggiunto messaggio di errore all'utente
       }
     };
 
@@ -28,6 +29,7 @@ export default function PostDetail() {
         setComments(commentsData || []); // Imposta i commenti nello stato, assicurandosi che sia un array
       } catch (error) {
         console.error("Errore nel caricamento dei commenti:", error); // Logga l'errore in console
+        alert("Si è verificato un errore nel caricamento dei commenti."); // Aggiunto messaggio di errore all'utente
       }
     };
 
@@ -42,6 +44,7 @@ export default function PostDetail() {
           fetchComments(); // Carica i commenti del post
         } catch (error) {
           console.error("Errore nel recupero dei dati utente:", error); // Logga l'errore in console
+          alert("Si è verificato un errore nel recupero dei dati utente."); // Aggiunto messaggio di errore all'utente
           setIsLoggedIn(false); // Imposta lo stato di autenticazione a false
         }
       } else {
@@ -95,11 +98,7 @@ export default function PostDetail() {
       setNewComment({ content: "" }); // Resetta il campo del nuovo commento
     } catch (error) {
       console.error("Errore nell'invio del commento:", error); // Logga l'errore in console
-      alert(
-        `Errore nell'invio del commento: ${
-          error.response?.data?.message || error.message
-        }`
-      );
+      alert("Si è verificato un errore nell'invio del commento."); // Aggiunto messaggio di errore all'utente
     }
   };
 
@@ -107,55 +106,90 @@ export default function PostDetail() {
 
   // Rendering del componente
   return (
-    <div className="container">
-      <article className="post-detail">
-        {/* Immagine di copertina del post */}
-        <img src={post.cover} alt={post.title} className="post-cover" />
-        {/* Titolo del post */}
-        <h1>{post.title}</h1>
-        {/* Dati del post */}
-        <div className="post-meta">
-          <span>Categoria: {post.categoria}</span>
-          <span>Autore: {post.autore}</span>
-        </div>
-        {/* Contenuto del post */}
-        {/* dangerouslySetInnerHTML, come nel template originario che ci ha dato EPICODE è usato per renderizzare HTML "RAW", usare con cautela!!!! */}
-        <div
-          className="comment-post-content"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
-
-        {/* Sezione commenti */}
-        <h3 className="comment-section-title">Commenti</h3>
-        {Array.isArray(comments) && comments.length > 0 ? (
-          comments.map((comment) => (
-            <div key={comment._id} className="comment">
-              <p>{comment.content}</p>
-              <small>Di: {comment.name}</small>
+    <>
+      <div className="wrapper">
+        <div className="container-1">
+          <article className="post-detail">
+            {/* Immagine di copertina del post */}
+            <img src={post.cover} alt={post.title} className="post-cover" />
+            {/* Titolo del post */}
+            <h1>{post.title}</h1>
+            {/* Dati del post */}
+            <div className="post-meta">
+              <span> <strong>Categoria:</strong> {post.categoria}</span>
+              <span> <strong>Autore:</strong> {post.autore}</span>
             </div>
-          ))
-        ) : (
-          <p>Nessun commento disponibile.</p>
-        )}
-
-        {isLoggedIn ? (
-          <form onSubmit={handleCommentSubmit}>
-            <textarea
-              value={newComment.content}
-              onChange={(e) =>
-                setNewComment({ ...newComment, content: e.target.value })
-              }
-              placeholder="Scrivi un commento..."
+            {/* Contenuto del post */}
+            {/* dangerouslySetInnerHTML, come nel template originario che ci ha dato EPICODE è usato per renderizzare HTML "RAW", usare con cautela!!!! */}
+            <div
+              className="comment-post-content"
+              style={{ fontSize: "20px", fontFamily: "Arial", color: "#333", width: "500px" }}
+              dangerouslySetInnerHTML={{ __html: post.content }}
             />
-            <button type="submit">Invia commento</button>
+
+            {/* Sezione commenti */}
+            <h3 className="comment-section-title">Commenti</h3>
+            {Array.isArray(comments) && comments.length > 0 ? (
+              comments.map((comment) => (
+                <div key={comment._id} className="comment">
+                  <p>{comment.content}</p>
+                  <small>Di: {comment.name}</small>
+                </div>
+              ))
+            ) : (
+              <p>Nessun commento disponibile.</p>
+            )}
+
+            {isLoggedIn ? (
+              <form onSubmit={handleCommentSubmit}>
+                <textarea
+                  value={newComment.content}
+                  onChange={(e) =>
+                    setNewComment({ ...newComment, content: e.target.value })
+                  }
+                  placeholder="Scrivi un commento..."
+                />
+                <button type="submit">Invia commento</button>
+              </form>
+            ) : (
+              <p className="no-logged-section">
+                <Link to="/login">Accedi</Link> per visualizzare o lasciare
+                commenti.
+              </p>
+            )}
+          </article>
+        </div>
+        <div className="container-2">
+          <form className="adoption-form">
+            <h2>Modulo di adozione cucciolo</h2>
+            <div className="form-group">
+              <label>
+                Nome:
+                <input type="text" required />
+              </label>
+            </div>
+            <div className="form-group">
+              <label>
+                Email:
+                <input type="email" required />
+              </label>
+            </div>
+            <div className="form-group">
+              <label>
+                Telefono:
+                <input type="tel" required />
+              </label>
+            </div>
+            <div className="form-group">
+              <label>
+                Situazione abitativa:
+                <textarea required></textarea>
+              </label>
+            </div>
+            <button type="submit">Invia Richiesta di Adozione</button>
           </form>
-        ) : (
-          <p className="no-logged-section">
-            <Link to="/login">Accedi</Link> per visualizzare o lasciare
-            commenti.
-          </p>
-        )}
-      </article>
-    </div>
+        </div>
+      </div>
+    </>
   );
 }

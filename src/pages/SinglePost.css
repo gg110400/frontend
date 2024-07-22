@@ -1,27 +1,120 @@
+.container-1 {
+    max-width: 800px; /* Limita la larghezza massima del contenitore */
+    margin: 0 auto; /* Centra il contenitore */
+    padding: 20px; /* Aggiunge padding */
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .post-detail {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px 0;
-  }
-  
-  .post-cover {
-    width: 100%;
-    max-height: 400px;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-  
-  .post-detail h1 {
-    margin: 20px 0;
-  }
-  
-  .post-meta {
+    margin-bottom: 40px; /* Spazio tra i post */
     display: flex;
-    justify-content: space-between;
-    color: #666;
-    margin-bottom: 20px;
-  }
-  
-  .post-content {
-    line-height: 1.6;
-  }
+    flex-direction: column;
+    align-items: center;
+}
+
+.post-cover {
+   width:600px;
+    height: auto; /* Mantiene le proporzioni */
+    border-radius: 8px; /* Angoli arrotondati per l'immagine */
+    margin-top:20px;
+}
+
+.post-meta {
+    font-size: 0.9em; /* Dimensione del font più piccola */
+    color: #555; /* Colore del testo grigio scuro */
+    margin-bottom: 20px; /* Spazio sotto i metadati */
+    display: flex;
+    gap:20px;
+    font-size:20px;
+}
+
+
+
+ .comment-post-content {
+    margin: 20px 0; /* Spazio sopra e sotto il contenuto del post */
+    line-height: 1.6; /* Maggiore interlinea per leggibilità */
+    
+
+    
+}
+
+.comment-section-title {
+    margin-top: 40px; /* Spazio sopra il titolo dei commenti */
+    font-size: 1.5em; /* Dimensione del font più grande */
+    color: #333; /* Colore del testo scuro */
+}
+
+.comment {
+    background-color: #fff; /* Sfondo bianco per i commenti */
+    border: 1px solid #ddd; /* Bordo grigio chiaro */
+    border-radius: 5px; /* Angoli arrotondati per i commenti */
+    padding: 10px; /* Padding interno */
+    margin-bottom: 10px; /* Spazio tra i commenti */
+}
+
+.no-logged-section {
+    margin-top: 20px; /* Spazio sopra la sezione di accesso */
+    font-style: italic; /* Testo in corsivo */
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.container-1 {
+  width:50%;
+}
+
+.container-2 {
+  width:50%;
+}
+
+.adoption-form {
+  display: flex;
+  flex-direction: column;
+  gap:24px;
+  margin-top:25px;
+  font-family: Arial, Helvetica, sans-serif;
+  align-items: center;
+  width:100%;
+ 
+}
+
+.adoption-form h2 {
+  background: linear-gradient(to right, #ff512f, #ff6f61, #dd2476); 
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 0;
+}
+
+.adoption-form input:first-of-type {
+  margin-top:0px;
+}
+
+.adoption-form input,
+.adoption-form textarea {
+  display: block;
+  padding:5px;
+  margin-top:15px;
+  border-radius:3px;
+  border:1px solid gainsboro;
+  background-color: rgba(157, 157, 157, 0.256); /* Grigio trasparente */
+  width:400px;
+}
+
+
+.adoption-form button {
+  width:400px;
+  padding:8px;
+  border-radius:5px;
+  background: linear-gradient(to right, #ff512f, #ff6f61, #dd2476); 
+  color:white;
+  border:none;
+  cursor: pointer;
+  font-size:16px;
+
+}

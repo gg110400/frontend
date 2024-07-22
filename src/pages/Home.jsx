@@ -22,7 +22,7 @@ function Home() {
     return (
          <>
             <div className='home-title'>
-                <h1 style={{fontFamily: 'Arial, sans-serif'}}>Benvenuto sul AdottaUnAmico.it</h1>
+                <h1 style={{fontFamily: 'Arial, sans-serif'}}>Benvenuto sul AdottaUnAmico.it 🐶</h1>
                 <div className='home-title-content'>
                     <p style={{height: '200px', fontFamily: 'Arial, sans-serif'}}>
                         Scopri come adottare il tuo cucciolo ideale e rendere felice un amico a quattro zampe! 
