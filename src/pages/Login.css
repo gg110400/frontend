@@ -1,0 +1,66 @@
+.login-box {
+    border:1px solid rgba(220, 220, 220, 0.601);
+    background-color: rgba(245, 245, 245, 0.666);
+    width:400px;
+    height:480px;
+    margin-bottom:30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    border-radius: 5px;
+}
+
+.log-container {
+    width:100%;
+    height:80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://cdn.pixabay.com/photo/2024/03/29/08/54/dachshund-8662446_1280.jpg');
+    background-size: contain;
+    background-position: center;
+    margin:0;
+}
+
+.login-box button {
+    display: block;
+    width: 300px;
+    padding: 10px;
+    margin-top: 15px;
+    background: linear-gradient(to right, #ff512f, #ff6f61, #dd2476); 
+    border: none; /* Rimuove il bordo predefinito */
+    transition: background-color 0.3s; /* Transizione per il cambiamento di colore */
+    cursor: pointer;
+    color:white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:15px;
+    border-radius: 5px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-box button:hover {
+    background: linear-gradient(to right, #ff6f61, #dd2476, #ff512f); 
+}
+
+.login-box input {
+    width:290px;
+    padding:10px;
+}
+
+.login-box label {
+    margin-bottom:10px;
+}
+
+.input-group {
+    margin-bottom:15px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.input-group:last-of-type {
+    margin-bottom:40px;
+}

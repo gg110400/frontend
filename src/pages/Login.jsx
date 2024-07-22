@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { loginUser } from "../services/api.js";
+import "./Login.css";
+import { FaGoogle, FaGithub } from "react-icons/fa"; // Aggiungi questa importazione
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -71,10 +73,11 @@ const handleGoogleLogin = () => {
   };
 
   return (
-    <div>
+    <div className="log-container">
+    <div className="login-box">
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="input-group">
           <label htmlFor="email">Email:</label>
           <input
             type="email"
@@ -84,7 +87,7 @@ const handleGoogleLogin = () => {
             required
           />
         </div>
-        <div>
+        <div className="input-group">
           <label htmlFor="password">Password:</label>
           <input
             type="password"
@@ -95,9 +98,14 @@ const handleGoogleLogin = () => {
           />
         </div>
         <button type="submit">Accedi</button>
-        <button onClick={handleGoogleLogin}>Accedi con Google</button>
-        <button onClick={handleGitHubLogin}>Accedi con Github</button>
+        <button onClick={handleGoogleLogin} className="google-button">
+          <FaGoogle style={{ color: "white", fontSize: "20px", marginRight: '20px' }} /> Accedi con Google
+        </button>
+        <button onClick={handleGitHubLogin} className="github-button">
+          <FaGithub style={{ color: "black", fontSize: "20px", marginRight: '20px' }} /> Accedi con Github
+        </button>
       </form>
+    </div>
     </div>
   );
 }

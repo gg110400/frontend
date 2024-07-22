@@ -1,0 +1,56 @@
+.nav ul {
+    background: linear-gradient(to right, #ff512f, #ff6f61, #dd2476); 
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 30px;
+  height: 80px;
+  margin:0;
+}
+
+.nav ul li {
+  list-style: none;
+}
+
+.nav ul li a {
+  color: white; /* Imposta il colore del testo a bianco */
+  font-family: "Arial", sans-serif; /* Cambia il font */
+  font-size: 18px; /* Aumenta la dimensione del testo */
+  padding: 10px 20px; /* Aggiungi padding per far sembrare un pulsante */
+  border-radius: 5px; /* Aggiungi angoli arrotondati */
+  background-color: #ff512f;
+  border:1px solid white;
+  text-decoration: none;
+}
+
+.nav ul li button {
+  color: white; /* Imposta il colore del testo a bianco */
+  font-family: "Arial", sans-serif; /* Cambia il font */
+  font-size: 18px; /* Aumenta la dimensione del testo */
+  background-color: #ff1e3c;
+  border: none; /* Rimuovi il bordo del bottone */
+}
+
+.nav ul li a:hover {
+    background-color: white;;
+    color: #dd2476; /* Colore di sfondo al passaggio del mouse */
+  }
+
+  .nav li h1 {
+   color:white;
+   font-family: Arial, Helvetica, sans-serif;
+   font-size:27px;
+   position: relative;
+   left:330px;
+  }
+
+#site-title {
+    text-decoration: none;
+    font-size:25px;
+    background: none;
+    border:none;
+}
+
+#site-title:hover {
+    color: inherit; /* Mantiene il colore originale al passaggio del mouse */
+}

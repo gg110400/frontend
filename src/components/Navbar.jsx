@@ -48,18 +48,20 @@ export default function Navbar() {
   };
 
   return (
-    <nav>
+    <nav className='nav'>
       <ul>
         {isLoggedIn ? (
           <>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/create">New Post</Link></li>
             <li><button onClick={handleLogout}>Logout</button></li>
+            <li><h1><a href="/"  id="site-title">I Miei Amici Cuccioli 🐾</a></h1></li>
           </>
         ) : (
           <>
             <li><Link to="/login">Login</Link></li>
             <li><Link to="/register">Register</Link></li>
+            <li><h1><a href="/"  id="site-title">I Miei Amici Cuccioli 🐾</a></h1></li>
           </>
         )}
       </ul>
