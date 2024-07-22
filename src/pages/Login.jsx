@@ -32,14 +32,20 @@ function Login() {
   }, [location, navigate]); // Questo effect dipende da location e navigate
 
 
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000/api";
+
+
 // Funzione per gestire il login con Google
 const handleGoogleLogin = () => {
     // Reindirizziamo l'utente all'endpoint del backend che inizia il processo di autenticazione Google
-    window.location.href = "http://localhost:3000/api/auth/google";
+    window.location.href = `${API_URL}/api/auth/google`;
   };
 
 
-
+ // Funzione aggiornata per gestire il login con GitHub
+ const handleGitHubLogin = () => {
+  window.location.href = `${API_URL}/api/auth/github`;
+};
 
 
   const handleChange = (e) => {
@@ -90,6 +96,7 @@ const handleGoogleLogin = () => {
         </div>
         <button type="submit">Accedi</button>
         <button onClick={handleGoogleLogin}>Accedi con Google</button>
+        <button onClick={handleGitHubLogin}>Accedi con Github</button>
       </form>
     </div>
   );
