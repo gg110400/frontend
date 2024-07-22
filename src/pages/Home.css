@@ -1,0 +1,22 @@
+
+
+.post-container {
+    display:flex; 
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.post {
+    width:400px;
+    border:1px solid black;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.post-image {
+    width:200px;
+}
