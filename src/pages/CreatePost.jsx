@@ -75,6 +75,7 @@ export default function CreatePost() {
       // Naviga alla rotta della home dopo la creazione del post
       navigate("/");
     } catch (error) {
+      navigate('/')
       console.error("Errore nella creazione del post:", error);
     }
   };

@@ -27,11 +27,11 @@ function Login() {
   }, [location, navigate]);
 
   const handleGoogleLogin = () => {
-    window.location.href = `${API_URL}/auth/google`;
+    window.location.href = `${API_URL}/api/auth/google`;
   };
 
   const handleGitHubLogin = () => {
-    window.location.href = `${API_URL}/auth/github`;
+    window.location.href = `${API_URL}/api/auth/github`;
   };
 
   const handleChange = (e) => {
