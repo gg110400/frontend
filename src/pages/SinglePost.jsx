@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react"; // Importa i hook useState e useEffect da React
 import { useParams, Link } from "react-router-dom"; // Importa useParams e Link da react-router-dom per gestire i parametri dell'URL e creare link
-import { getSinglePost, getComments, addComment, getUserData } from "../services/api.js"; // Importa le funzioni API per interagire con il backend
+import {
+  getSinglePost,
+  getComments,
+  addComment,
+  getUserData,
+} from "../services/api.js"; // Importa le funzioni API per interagire con il backend
 import "./SinglePost.css"; // Importa il file CSS per il componente PostDetail
 
 export default function PostDetail() {
@@ -80,14 +85,15 @@ export default function PostDetail() {
 
     try {
       const commentData = {
-        content: newComment.content.trim(), // Contenuto del nuovo commento
         name: `${userData.nome} ${userData.cognome}`, // Nome dell'utente
         email: userData.email, // Email dell'utente
+        content: newComment.content.trim(), // Contenuto del nuovo commento
       };
 
       console.log("Dati del commento da inviare:", commentData); // Logga i dati del commento per il debug
 
       const newCommentData = await addComment(id, commentData); // Invia il nuovo commento all'API
+      console.log("Risposta dall'API:", newCommentData);
 
       // Genera un ID temporaneo se l'API non restituisce un ID in tempo
       if (!newCommentData._id) {
@@ -116,14 +122,25 @@ export default function PostDetail() {
             <h1>{post.title}</h1>
             {/* Dati del post */}
             <div className="post-meta">
-              <span> <strong>Categoria:</strong> {post.categoria}</span>
-              <span> <strong>Autore:</strong> {post.autore}</span>
+              <span>
+                {" "}
+                <strong>Categoria:</strong> {post.categoria}
+              </span>
+              <span>
+                {" "}
+                <strong>Autore:</strong> {post.autore}
+              </span>
             </div>
             {/* Contenuto del post */}
             {/* dangerouslySetInnerHTML, come nel template originario che ci ha dato EPICODE è usato per renderizzare HTML "RAW", usare con cautela!!!! */}
             <div
               className="comment-post-content"
-              style={{ fontSize: "20px", fontFamily: "Arial", color: "#333", width: "500px" }}
+              style={{
+                fontSize: "20px",
+                fontFamily: "Arial",
+                color: "#333",
+                width: "500px",
+              }}
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
 
@@ -142,14 +159,17 @@ export default function PostDetail() {
 
             {isLoggedIn ? (
               <form onSubmit={handleCommentSubmit}>
-                <textarea className="comment-textarea"
+                <textarea
+                  className="comment-textarea"
                   value={newComment.content}
                   onChange={(e) =>
                     setNewComment({ ...newComment, content: e.target.value })
                   }
                   placeholder="Scrivi un commento..."
                 />
-                <button type="submit" className="comment-button">Invia commento</button>
+                <button type="submit" className="comment-button">
+                  Invia commento
+                </button>
               </form>
             ) : (
               <p className="no-logged-section">

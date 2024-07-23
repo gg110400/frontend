@@ -43,9 +43,9 @@ export const getComments = (postId) =>
 
 
 // Aggiunge un nuovo commento a un post specifico
-export const addComment = (postId, commentData) =>
+export const addComment = (id, commentData) =>
     api
-      .post(`/blogposts/${postId}/comments`, commentData)
+      .post(`/blogposts/${id}/comments`, commentData)
       .then((response) => response.data);
 
 // Funzione per recuperare un commento specifico
