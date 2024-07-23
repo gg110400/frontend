@@ -1,9 +1,12 @@
-import React, { useContext } from "react";
+
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { loginUser } from "../services/api.js";
 import "./Login.css";
 import { FaGoogle, FaGithub } from "react-icons/fa"; // Aggiungi questa importazione
+
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -34,8 +37,7 @@ function Login() {
   }, [location, navigate]); // Questo effect dipende da location e navigate
 
 
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
-
+ 
 
 // Funzione per gestire il login con Google
 const handleGoogleLogin = () => {
@@ -64,11 +66,11 @@ const handleGoogleLogin = () => {
       localStorage.setItem("token", response.token);
       window.dispatchEvent(new Event("storage"));
       console.log("Login effettuato!!");
-      setIsLoggedIn(true); // Cambia lo stato del contesto
       navigate("/");
     } catch (error) {
       console.error("Error:", error);
-      navigate("/");
+      navigate("/login");
+      alert('Errore durante accesso!');
     }
   };
 

@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import '../components/Navbar.css';
+import { getUserData } from "../services/api";
 
 export default function Navbar() {
     const [isLoggedIn, setIsLoggedIn]= useState(false);
