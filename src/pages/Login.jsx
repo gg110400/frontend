@@ -30,9 +30,7 @@ function Login() {
     window.location.href = `${API_URL}/api/auth/google`;
   };
 
-  const handleGitHubLogin = () => {
-    window.location.href = `${API_URL}/api/auth/github`;
-  };
+
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -85,9 +83,6 @@ function Login() {
           <button type="submit">Accedi</button>
           <button type="button" onClick={handleGoogleLogin} className="google-button">
             <FaGoogle style={{ color: "white", fontSize: "20px", marginRight: "20px" }} /> Accedi con Google
-          </button>
-          <button type="button" onClick={handleGitHubLogin} className="github-button">
-            <FaGithub style={{ color: "black", fontSize: "20px", marginRight: "20px" }} /> Accedi con GitHub
           </button>
         </form>
       </div>
