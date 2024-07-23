@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 // Importo la funzione createPost dal mio file services/api
 import { createPost, getMe } from "../services/api";
+import '../pages/CreatePost.css';
+
 
 export default function CreatePost() {
   // Stato per memorizzare i dati del nuovo post
@@ -79,72 +81,75 @@ export default function CreatePost() {
 
   // Template del componente
   return (
-    <div className="container">
-      <h1>Crea un nuovo post</h1>
-      <form onSubmit={handleSubmit} className="create-post-form">
-        {/* Campo per il titolo */}
-        <div className="form-group">
-          <label>Titolo</label>
-          <input
-            type="text"
-            id="titolo"
-            name="titolo"
-            value={post.titolo}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        {/* Campo per la categoria */}
-        <div className="form-group">
-          <label>Categoria</label>
-          <input
-            type="text"
-            id="categoria"
-            name="categoria"
-            value={post.categoria}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        {/* Campo per il contenuto HTML */}
-        <div className="form-group">
-          <label>Contenuto</label>
-          <textarea
-            id="content"
-            name="content"
-            value={post.content}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        {/* Campo per l'upload del file di copertina */}
-        <div className="form-group">
-          <label>Immagine di copertina</label>
-          <input
-            type="file"
-            id="cover"
-            name="cover"
-            onChange={handleFileChange}
-            required
-          />
-        </div>
-        {/* Campo per l'email dell'autore */}
-        <div className="form-group">
-          <label>Email autore</label>
-          <input
-            type="email"
-            id="autore"
-            name="autore"
-            value={post.autore}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        {/* Pulsante di invio */}
-        <button type="submit" className="submit-button">
-          Crea il post
-        </button>
-      </form>
+    <div className="create-container">
+      
+      <div className="form-wrapper">
+        <h1>Crea un nuovo post</h1>
+        <form onSubmit={handleSubmit} className="create-post-form">
+          {/* Campo per il titolo */}
+          <div className="form-group">
+            <label>Titolo</label>
+            <input
+              type="text"
+              id="titolo"
+              name="titolo"
+              value={post.titolo}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          {/* Campo per la categoria */}
+          <div className="form-group">
+            <label>Categoria</label>
+            <input
+              type="text"
+              id="categoria"
+              name="categoria"
+              value={post.categoria}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          {/* Campo per il contenuto HTML */}
+          <div className="form-group">
+            <label>Contenuto</label>
+            <textarea
+              id="content"
+              name="content"
+              value={post.content}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          {/* Campo per l'upload del file di copertina */}
+          <div className="form-group">
+            <label>Immagine di copertina</label>
+            <input
+              type="file"
+              id="cover"
+              name="cover"
+              onChange={handleFileChange}
+              required
+            />
+          </div>
+          {/* Campo per l'email dell'autore */}
+          <div className="form-group">
+            <label>Email autore</label>
+            <input
+              type="email"
+              id="autore"
+              name="autore"
+              value={post.autore}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          {/* Pulsante di invio */}
+          <button type="submit" className="submit-button">
+            Crea il post
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

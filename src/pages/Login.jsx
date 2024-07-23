@@ -1,12 +1,10 @@
-
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { loginUser } from "../services/api.js";
 import "./Login.css";
-import { FaGoogle, FaGithub } from "react-icons/fa"; // Aggiungi questa importazione
+import { FaGoogle, FaGithub } from "react-icons/fa";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
-
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -18,39 +16,23 @@ function Login() {
   const location = useLocation();
 
   useEffect(() => {
-    // Questo effect viene eseguito dopo il rendering del componente
-    // e ogni volta che location o navigate cambiano
-
-    // Estraiamo i parametri dall'URL
     const params = new URLSearchParams(location.search);
-    // Cerchiamo un parametro 'token' nell'URL
     const token = params.get("token");
 
     if (token) {
-      // Se troviamo un token, lo salviamo nel localStorage
       localStorage.setItem("token", token);
-      // Dispatchamo un evento 'storage' per aggiornare altri componenti che potrebbero dipendere dal token
       window.dispatchEvent(new Event("storage"));
-      // Navighiamo alla home page
       navigate("/");
     }
-  }, [location, navigate]); // Questo effect dipende da location e navigate
+  }, [location, navigate]);
 
-
- 
-
-// Funzione per gestire il login con Google
-const handleGoogleLogin = () => {
-    // Reindirizziamo l'utente all'endpoint del backend che inizia il processo di autenticazione Google
-    window.location.href = `${API_URL}/api/auth/google`;
+  const handleGoogleLogin = () => {
+    window.location.href = `${API_URL}/auth/google`;
   };
 
-
- // Funzione aggiornata per gestire il login con GitHub
- const handleGitHubLogin = () => {
-  window.location.href = `${API_URL}/api/auth/github`;
-};
-
+  const handleGitHubLogin = () => {
+    window.location.href = `${API_URL}/auth/github`;
+  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -64,50 +46,51 @@ const handleGoogleLogin = () => {
         throw new Error(response.error);
       }
       localStorage.setItem("token", response.token);
+      console.log("Token salvato nel localStorage:", response.token);
       window.dispatchEvent(new Event("storage"));
+      console.log("Evento 'storage' emesso");
       console.log("Login effettuato!!");
       navigate("/");
     } catch (error) {
       console.error("Error:", error);
-      navigate("/login");
-      alert('Errore durante accesso!');
+      alert("Errore durante accesso!");
     }
   };
 
   return (
     <div className="log-container">
-    <div className="login-box">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="input-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="input-group">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit">Accedi</button>
-        <button onClick={handleGoogleLogin} className="google-button">
-          <FaGoogle style={{ color: "white", fontSize: "20px", marginRight: '20px' }} /> Accedi con Google
-        </button>
-        <button onClick={handleGitHubLogin} className="github-button">
-          <FaGithub style={{ color: "black", fontSize: "20px", marginRight: '20px' }} /> Accedi con Github
-        </button>
-      </form>
-    </div>
+      <div className="login-box">
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="input-group">
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <button type="submit">Accedi</button>
+          <button type="button" onClick={handleGoogleLogin} className="google-button">
+            <FaGoogle style={{ color: "white", fontSize: "20px", marginRight: "20px" }} /> Accedi con Google
+          </button>
+          <button type="button" onClick={handleGitHubLogin} className="github-button">
+            <FaGithub style={{ color: "black", fontSize: "20px", marginRight: "20px" }} /> Accedi con GitHub
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

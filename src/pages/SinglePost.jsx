@@ -142,14 +142,14 @@ export default function PostDetail() {
 
             {isLoggedIn ? (
               <form onSubmit={handleCommentSubmit}>
-                <textarea
+                <textarea className="comment-textarea"
                   value={newComment.content}
                   onChange={(e) =>
                     setNewComment({ ...newComment, content: e.target.value })
                   }
                   placeholder="Scrivi un commento..."
                 />
-                <button type="submit">Invia commento</button>
+                <button type="submit" className="comment-button">Invia commento</button>
               </form>
             ) : (
               <p className="no-logged-section">
